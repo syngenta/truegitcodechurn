@@ -3,7 +3,7 @@ import os
 
 from gitcodechurn.exporters import ExporterFactory
 from gitcodechurn.git import Git
-from gitcodechurn.churn import calculate_statistics
+from gitcodechurn.churn import Churn
 
 
 def main():
@@ -71,7 +71,7 @@ def main():
 
     commits = Git.get_commits(before, after, author, project_dir)
 
-    files, contribution, churn = calculate_statistics(commits, project_dir, exdir)
+    files, contribution, churn = Churn.calculate_statistics(commits, project_dir, exdir)
 
     # if author is empty then print a unique list of authors
     if len(author.strip()) == 0:
